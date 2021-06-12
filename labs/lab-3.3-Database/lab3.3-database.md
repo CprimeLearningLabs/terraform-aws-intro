@@ -16,12 +16,12 @@ To provide security of data at rest in our infrastructure, we will be creating a
 
 In order to read a key from KMS, we will need to use a data source in Terraform.
 
-Create a new file “database.tf”
+Create a new file `database.tf`.
 ```
 touch database.tf
 ```
 
-Open the file for edit and add a data source to read a specified key from AWS KMS.
+Open the file for edit and add a data source to read a specified key from AWS KMS.  The "key_id" provides the criteria by which to find the desired key.
 ```
 data "aws_kms_key" "lab" {
   key_id = "alias/tflabs-dbkey"
@@ -30,7 +30,7 @@ data "aws_kms_key" "lab" {
 
 ### Define a Database
 
-Continue to edit the "database.tf" file.  We will be adding a few new resources to specify a MySQL database.
+Continue to edit the `database.tf` file.  We will be adding a few new resources to instantiate a MySQL database.
 
 1. A security group to enable access to the database from the bastion host.
 ```
@@ -103,15 +103,12 @@ Run terraform validate to make sure you have no errors:
 terraform validate
 ```
 
-Run terraform plan and verify that three new resources will be created.  The data source is read by Terraform as a part of generating the plan.
+Run terraform plan and verify that three new resources will be created.  The data source is read by Terraform during the plan generation in order to populate the ARN value for the "kms_key_id" attribute of the aws_db_instance resource.
 ```
 terraform plan
 ```
-![Terraform Plan - DB](./images/tf-plan-db.png "Terraform Plan - DB")
 
-
-Run terraform apply. (Remember to agree to the changes.)  The database server can sometimes take a few minutes to create.
+Run terraform apply. (Remember to agree to the changes.)  The database can sometimes take several minutes to create.
 ```
 terraform apply
 ```
-![Terraform apply - database create](./images/tf-apply-db.png "Terraform apply - database create")

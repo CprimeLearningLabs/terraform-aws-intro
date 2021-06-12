@@ -13,7 +13,7 @@ If you did not complete lab 2.1, you can simply copy the code from that lab as t
 
 ## Lab
 
-Open the file "main.tf" for edit.
+Open the file `main.tf` for edit.
 
 Add the following code to the end of the file to create a simple random number resource.
 
@@ -95,6 +95,4 @@ Now run terraform show again to confirm that the current state shows no resource
 terraform show
 ```
 
-Notice that the contents are empty.
-
-![Terraform show](./images/tf-show2.png "Output of terraform show")
+The output from the command should be a blank line, which indicates the contents are empty.

@@ -7,9 +7,9 @@ Lab Objective:
 
 ### Change to use AWS Provider
 
-Open "main.tf" for edit and make the following changes:
+Open `main.tf` for edit and make the following changes:
 
-1. Add AWS as a required provider.  We continue to use AWS for storing backend state.  The terraform block in "main.tf" should look as follows:
+1. Add AWS as a required provider.  We continue to use AWS for storing backend state.  The terraform block in main.tf should look as follows:
 
 ```
 terraform {
@@ -46,12 +46,12 @@ provider "aws" {
 }
 ```
 
-3. Delete the "random_number" resource from the file.  We no longer need that resource.
+3. Delete the "random_number" resource from the file.  We no longer need that resource. (Keep the "random" provider since we will use it again later.)
 
 
 ### Define Network Resources
 
-Create a new file “network.tf”.
+Create a new file `network.tf`.
 ```
 touch network.tf
 ```
@@ -155,6 +155,8 @@ resource "aws_subnet" "lab-private-2" {
 }
 ```
 
+Stop to think a minute about the infrastructure we have defined. Does it make sense?
+
 Run terraform init.  Do you know why we need to re-run this command?
 ```
 terraform init
@@ -167,34 +169,32 @@ Run terraform plan.
 ```
 terraform plan
 ```
-(If you see in the plan that random_integer.number is to be destroyed, that is okay.  Do you know why this is happening?)
+If you see in the plan that random_integer.number is to be destroyed, that is okay.  Do you know why this is happening?
 
-![Random integer destroy warning](./images/tf-plan.png "Random integer destroy warning")
-<br /><br />
-
-Run terraform apply to create all the new infrastructure.
+Run terraform apply to create all the new infrastructure. *Be sure to type 'yes' to perform the actions.*
 ```
 terraform apply
 ```
 
-### Viewing Results in the AWS Console
+### Viewing Results in the AWS Management Console
 
-Let's use the AWS Console to see what we just created.  Minimize the Cloud Shell console so you can see the AWS Console UI fully.
+Let's use the AWS Console to see what you just created.  Go to the browser in which you logged into the Console UI.
 
-In the menu bar at the top of the AWS Console page, select "Services".  Select VPC from the drop-down.
+In the search bar at the top of the AWS Console page, type "VPC".  Select the VPC service from the drop-down.
 
-You should see the following.
-
-![Azure Resource Groups](./images/az-rg.png "Azure Resource Groups")
+![AWS Console Service Search](./images/console-search-vpc.png "AWS Console Service Search")
 <br /><br />
 
-Click on the "Terraform-Labs" VPC created by Terraform. (The other VPC is a default VPC. You can ignore it.)
+On the VPC dashboard page, select the "Your VPCs" menu item in the left navigation panel.
 
-Confirm you see the VPC and subnets created.<br />
-
-![Resource Group containing virtual network and security group](./images/az-rg-vnet.png "Resource Group containing virtual network and security group")
-
+![VPC Dashboard](./images/vpc-dashboard.png "VPC Dashboard")
 <br /><br />
-Click on the virtual network and confirm it has the expected subnets, and that the public subnet has the expected security group.
 
-![Virtual network subnets and security group](./images/az-vnet-subnets.png "Virtual network subnets and security group")
+You will see two VPCs listed.  One has the name "Terraform Labs".  This is the one your just created.  The other VPC is a default VPC, which we will ignore for this class.
+
+![VPC List](./images/vpc-list.png "VPC List")
+<br /><br />
+
+Click on the "Subnets" menu item in the left navigation panel.  You will see a listing of the subnets that were created.  Note that the subnets with names beginning with "Terraform Labs" were created in the Terraform Labs VPC.  Confirm that the CIDR blocks of the subnets are as expected.
+
+![Subnet List](./images/subnet-list.png "Subnet List")

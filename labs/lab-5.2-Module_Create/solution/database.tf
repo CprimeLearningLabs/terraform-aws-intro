@@ -73,7 +73,7 @@ resource "aws_db_instance" "lab-database" {
   }
 }
 
-module "dynamodb" "lab" {
+module "dynamodb" {
   source  = "terraform-aws-modules/dynamodb-table/aws"
   version = "1.0.0"
 

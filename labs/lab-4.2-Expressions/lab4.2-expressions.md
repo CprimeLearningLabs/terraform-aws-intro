@@ -25,20 +25,12 @@ At the “>” prompt, enter the following to see what they evaluate to.
 
 > true
 ```
-
-<details>
-
- _<summary>Click to see results of above</summary>_
-
-![Terraform console results](./images/tf-console-1.png "Terraform console results")
-</details>
-
-:information_source: Be careful when typing the quotes in the 2nd example above. Also, note that "True" will return an error in the 3rd example.
+:information_source: Be careful when typing the quotes in the 2nd example above to use double quotes -- single quotes are invalid. Also, note that "True" will return an error in the 3rd example.
 
 #### Conditional:
 
 ```
-> local.environment == "prod" ? "t3.large" : "t3.micro"
+> local.environment == "Prod" ? "t3.large" : "t3.micro"
 
 > local.region == "us-west-2" ? "primary" : "secondary"
 ```
@@ -77,7 +69,6 @@ _Extract the keys of the subnet tags:_
 ![Terraform console results](./images/tf-console-4.png "Terraform console results")
 </details>
 
-<br /><br />
 To exit the Terraform console, type:
 
 ```

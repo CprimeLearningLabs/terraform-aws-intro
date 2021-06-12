@@ -11,13 +11,13 @@ If you did not complete lab 4.3, you can simply copy the solution code from that
 
 Look through the configuration files, and think about what outputs you might want to provide to users who instantiate this configuration.
 
-:question: What attributes have you needed to find so you can use them in running commands.
+:question: What attributes have you needed to find so you can use them in running commands?
 
 For this lab, we will output two values:
-- Public IP of virtual machine (to include in SSH command)
-- Database endpoint (to include in a psql command to connect to the database)
+- Public IP of virtual machine (needed when using ssh to connect to the bastion host)
+- Database endpoint (needed if you wanted to execute a psql command to connect to the database)
 
-Create a file called “outputs.tf”
+Create a file called `outputs.tf`.
 
 Add outputs for the above two attributes to the file.  Try your hand at it first before looking at the solution.  You might want to take a look at the Terraform documentation to see what attributes are exported for the two resources:
 - aws_instance
@@ -60,7 +60,7 @@ The output values will show up in the console at the end of the apply console ou
 
 ![Terraform Apply - Outputs](./images/tf-apply-outputs.png "Terraform Apply - Outputs")
 
-You can use terraform output to view the output values now that they are part of the Terraform state.
+You can execute terraform output to view the output values now that they are part of the Terraform state.
 
 ```
 terraform output bastion-public-ip

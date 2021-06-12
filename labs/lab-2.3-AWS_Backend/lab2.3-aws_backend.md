@@ -17,19 +17,18 @@ terraform apply
 
 (If there was current state already, then the apply will show nothing to create; otherwise accept the changes to apply.)
 
-![Nonempty Terraform state](./images/tf-show-apply.png "Nonempty Terraform state")
 
-### Authenticate to AWS CLI
+### Authenticate to AWS
 
-If you are running this lab in the AWS Cloud Shell, then Azure CLI authentication was already automatically done when you opened Cloud Shell.  
+If you are running this lab from the virtual machine provisioned for you, permissions needed by Terraform have already been handled by an IAM role attached to the virtual machine. So there is nothing you need to do.
 
-> If you are running this lab from a terminal shell outside of the Azure portal, then you would need to use the Azure CLI to authenticate by typing "az login" which will direct you to a browser login page to log into the Azure CLI.
+> If you are running this lab from a terminal shell somewhere else, then you would need to authenticate to AWS by one of the means discussed in class.
 
 ### Update Terraform configuration
 
 We will be configuring a backend to store the terraform state in an AWS S3 bucket.  The bucket was already set up prior to the class.  The backend state will be stored in a new object created in the bucket.
 
-Edit “main.tf” to add a backend for AWS.  Add the following as a sub-block in the terraform block.  *Make sure you are putting the new code inside the terraform block and not at the end of the file or another arbitrary location.*
+Edit `main.tf` to add a backend for AWS.  Add the following as a sub-block in the terraform block.  *Make sure you are putting the new code inside the terraform block and not at the end of the file or another arbitrary location.*
 
 ```
   backend "s3" {
@@ -59,7 +58,7 @@ terraform {
 
 This will now direct the state to be saved in AWS.  Since you changed the backend configuration, you will need to run terraform init again.
 
-A missing argument in the backend configuration above is the specification of the S3 bucket.  Terraform will therefore prompt you to enter the bucket name when you run terraform init.  The bucket name will be "cprimelearning-tflabs-NN" where NN is your username sequence number.  For example, if your username for logging into AWS was "student05" then your sequence number would be "05" (from the end of the username) and the storage account name would be "cprimelearning-tflabs-05".
+A missing argument in the backend configuration above is the specification of the S3 bucket.  Terraform will therefore prompt you to enter the bucket name when you run terraform init.  The bucket name will be "cprimelearning-tflabs-NN" where NN is a student sequence number provided to you by the instructor.  For example, if your student identifier was "student-05" then your sequence number would be "05" and the bucket name would be "cprimelearning-tflabs-05".
 
 Run:
 
@@ -69,17 +68,17 @@ terraform init
 
 Terraform will prompt you for the bucket name. Type the name as per the instructions above.   
 
-> If you enter the wrong bucket name, you will get an error.  Unfortunately you will not be able to just re-run terraform init.  You must first remove the .terraform subdirectory by typing "rm -rf .terraform".  You can then re-run terraform init.
+> If you enter the wrong bucket name, you will get an error.  Unfortunately you will not be able to just re-run terraform init.  You must first remove the `.terraform` subdirectory by typing `rm -rf .terraform`.  You can then re-run terraform init.
 
-Terraform will then prompt you to migrate the existing state from the “terraform.tfstate” file to the backend in AWS.
+Terraform will then prompt you to migrate the existing state from the “terraform.tfstate” file to the new backend in AWS.
 
-Type “yes”
+Type “yes”.
 
 ![Terraform init with remote backend](./images/tf-init.png "Terraform init with remote backend")
 
 Terraform will copy the state to AWS.  The state will be saved in a new AWS S3 object referenced in the backend configuration above.
 
-Notice that the terraform.tfstate file is left remaining in your working directory.  You should delete the file to avoid confusion.
+Notice that the `terraform.tfstate` file is left remaining in your working directory.  You should delete the file to avoid confusion.
 
 ```
 rm terraform.tfstate*
@@ -90,5 +89,3 @@ To confirm that the state still exists, use terraform show.
 ```
 terraform show
 ```
-
-![Terraform remote state](./images/tf-remote-state.png "Terraform remote state")
