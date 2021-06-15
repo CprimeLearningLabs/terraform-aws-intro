@@ -9,13 +9,13 @@ If you did not complete lab 4.5, you can simply copy the solution code from that
 
 ## Lab
 
-Open bastion.tf for edit.
+Open `bastion.tf` for edit.
 
 Notice that within the security group resource, there are multiple ingress rule sub-blocks.  We will replace the multiple sub-blocks by a single dynamic block.
 
 A dynamic block uses the for_each construct, which you now know requires a map of values by which to populate values for each iteration.  Since there are two security group rules, the map will have two keys.  What might you use as the map key for the different security rules?
 
-In the locals block in bastion.tf, add a new map with two keys (use the ingress rule description as the keys) and a sub-map for each key to specify the following values:
+Create a locals block in `bastion.tf`, add a new map with two keys (use the ingress rule description as the keys), and a sub-map for each key to specify the following values:
 * port
 *	protocol
 *	cidr blocks
@@ -51,16 +51,16 @@ Now replace the security group ingress rules with a dynamic block.  Try your han
  _<summary>Click to see solution for dynamic block</summary>_
 
 ```
-dynamic "ingress" {
-  for_each = local.bastion_ingress
-  content {
-    description = ingress.key
-    from_port   = ingress.value.port
-    to_port     = ingress.value.port
-    protocol    = ingress.value.protocol
-    cidr_blocks = ingress.value.cidrs
+  dynamic "ingress" {
+    for_each = local.bastion_ingress
+    content {
+      description = ingress.key
+      from_port   = ingress.value.port
+      to_port     = ingress.value.port
+      protocol    = ingress.value.protocol
+      cidr_blocks = ingress.value.cidrs
+    }
   }
-}
 ```
 </details>
 
@@ -73,5 +73,3 @@ Run terraform plan.  If you have refactored the code correctly, the plan should 
 ```
 terraform plan
 ```
-
-![Terraform Plan - change sg to for_each](./images/tf-plan-sgrule.png "Terraform Plan - change sg to for_each")

@@ -11,7 +11,7 @@ If you did not complete lab 4.6, you can simply copy the solution code from that
 
 ### Tag Merge
 
-Open the file variables.tf.
+Open the file `variables.tf`.
 
 Add a new variable to accept additional tags to set on our resources.  What should be the type for the tags variable?  (Hint: take a look at the existing tags argument in the various resources.)  Declare an empty map as the default value for the variable.
 
@@ -27,7 +27,7 @@ variable "tags" {
 ```
 </details>
 
-Open the file main.tf.
+Open the file `main.tf`.
 
 Modify the tags argument in the aws provider block to merge the tags input variable and the existing tag map.  What function would you use?  Try your hand at writing the solution before checking the solution below.  You can use terraform validate to check the syntax correctness of your solution.
 
@@ -53,7 +53,7 @@ Run terraform plan and confirm that nothing needs to be updated.  Why is that?
 terraform plan
 ```
 
-Now open the terraform.tfvars file.  Add a value for tags variable:
+Now open the `terraform.tfvars` file.  Add a value for tags variable:
 ```
 tags = {
   Owner = "Development"
@@ -76,7 +76,7 @@ terraform apply
 
 Now let’s try some more functions.
 
-Open the file main.tf.
+Open the file `main.tf`.
 
 Add a lookup map as follows in the locals block right above the cluster_size local value:
 
@@ -94,7 +94,7 @@ Add a lookup map as follows in the locals block right above the cluster_size loc
   }
 ```
 
-Add two more variables to variables.tf:
+Add two more variables to `variables.tf`:
 
 * **node_count** of type number with default as null
 
@@ -118,7 +118,7 @@ variable "load_level" {
 </details>
 
 We now want a way to determine cluster_size according to the following criteria:
-*	Use input variable node_count if it is not null
+*	Use the input variable node_count if it is not null
 *	Otherwise use the input variable load_level to lookup a cluster_size value from the size_spec map
 *	If both node_count and load_level input variables are undefined, then the default cluster size should be 1
 
@@ -126,7 +126,7 @@ We now want a way to determine cluster_size according to the following criteria:
 
 *Hint: It could be a combination of coalesce and lookup, maybe with try.*
 
-Try your hand at writing out the computation.  In the main.tf file, replace the current hard-coded local value of cluster_size with the computation.  Compare your solution to that below (or in the main.tf file in the solution folder).
+Try your hand at writing out the computation.  In the `main.tf` file, replace the current hard-coded local value of cluster_size with the computation.  Compare your solution to that below (or in the main.tf file in the solution folder).
 
 <details>
 
@@ -149,9 +149,9 @@ terraform plan
 
 :question: What is the effect in the execution plan on the number of application nodes? What does that tell you about the computed cluster size and how that value was derived?
 
-Now edit the terraform.tfvars file to set the one of the input variables.
+Now edit the `terraform.tfvars` file to set one of the input variables.
 
-* Set the value of load_level to “high”.
+* Set the value of `load_level` to “high”.
 
 Run terraform plan:
 ```
@@ -160,9 +160,9 @@ terraform plan
 
 :question: What is the effect in the execution plan on the number of application nodes? What does that tell you about the computed cluster size and how that value was derived?
 
-Add another setting in terraform.tfvars:
+Add another setting in `terraform.tfvars`:
 
-* Set the value of node_count to 2.
+* Set the value of `node_count` to 2.
 
 Run terraform plan:
 ```
@@ -172,9 +172,9 @@ terraform plan
 :question: What is the effect in the execution plan on the number of application nodes? What does that tell you about the computed cluster size and how that value was derived?
 
 You should have seen the following behavior (based on there being two VMs in the cluster to start with):
-* When the load_level and node_count are both missing from terraform.tfvars, the cluster_size derivation should have used the default value of 1, and the plan should have shown one virtual machine (plus its target group attachment) to be destroyed.
-![Terraform Plan - missing load_level and node_count](./images/tf-plan-cluster1.png "Terraform Plan - missing load_level and node_count")
+* When the load_level and node_count values are both missing from terraform.tfvars, the cluster_size derivation should have used the default value of 1, and the plan should have shown one virtual machine (plus its target group attachment) to be destroyed.
+![Terraform Plan - missing load_level and node_count](./images/tf-plan-destroy.png "Terraform Plan - missing load_level and node_count")
 * When you set load_level to "high" in terraform.tfvars, the cluster_size derivation should have used the lookup value of 3, and the plan should have shown one virtual machine (plus its target group attachment) to be created.
-![Terraform Plan - load_level = high](./images/tf-plan-cluster2.png "Terraform Plan - load_level = high")
+![Terraform Plan - load_level = high](./images/tf-plan-add.png "Terraform Plan - load_level = high")
 * When you set the node_count to 2 in terraform.tfvars, the cluster_size derivation should have used that value, and the plan should have shown no change in the number of virtual machines.
-![Terraform Plan - node_count = 2](./images/tf-plan-cluster3.png "Terraform Plan - node_count = 2")
+![Terraform Plan - node_count = 2](./images/tf-plan-nochange.png "Terraform Plan - node_count = 2")

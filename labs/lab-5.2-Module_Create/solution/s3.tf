@@ -13,7 +13,6 @@ locals {
       versioning = true
     }
   }
-  archiving_enabled = false
 }
 
 resource "aws_s3_bucket" "lab-bucket" {
