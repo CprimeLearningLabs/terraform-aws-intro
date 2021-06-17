@@ -75,7 +75,6 @@ Run terraform apply:
 ```
 terraform apply
 ```
-![Terraform apply - VM creation](./images/tf-vm-apply.png "Terraform apply - VM creation")
 
 ### Connect to the Virtual Machine
 

@@ -74,12 +74,12 @@ terraform state show random_password.dbpassword
 
 For privileged users, the password can be revealed through the AWS console.  Let's take a look.
 
-    1. In the AWS console search bar, type "systems manager". Click on the Systems Manager item in the drop-down.
+1. In the AWS console search bar, type "systems manager". Click on the Systems Manager item in the drop-down.
 
-    2. On the Systems Manage dashboard page, click on the "Parameter Store" menu item in the left navigation panel.  This will show a list of your stored parameters.
+2. On the Systems Manage dashboard page, click on the "Parameter Store" menu item in the left navigation panel.  This will show a list of your stored parameters.
 
-    ![AWS Console - Parameter Store](./images/aws-parameter-store.png "AWS Console - Parameter Store")
+![AWS Console - Parameter Store](./images/aws-parameter-store.png "AWS Console - Parameter Store")
 
-    3. In the list of parameters, click on the parameter "/database/Lab/password".  On the parameter overview page, you can click on "Show" to see the password.
+3. In the list of parameters, click on the parameter "/database/Lab/password".  On the parameter overview page, you can click on "Show" to see the password.
 
-    ![AWS Console - Password](./images/aws-password.png "AWS Console - Password")
+![AWS Console - Password](./images/aws-password.png "AWS Console - Password")

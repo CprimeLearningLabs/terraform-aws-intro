@@ -78,7 +78,7 @@ Type “yes”.
 
 Terraform will copy the state to AWS.  The state will be saved in a new AWS S3 object referenced in the backend configuration above.
 
-Notice that the `terraform.tfstate` file is left remaining in your working directory.  You should delete the file to avoid confusion.
+Notice that the `terraform.tfstate` file is left remaining in your working directory.  Although the file is now empty, you should delete the file to avoid confusion.
 
 ```
 rm terraform.tfstate*
