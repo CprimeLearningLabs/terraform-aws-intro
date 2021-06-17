@@ -5,7 +5,7 @@ Lab Objective:
 
 ## Preparation
 
-Be sure to have completed the instructions on the "environment-setup" page.
+Be sure to have completed the instructions on the "environment-access" page: [Verifying Environment Access](../environment-access/environment-access.md)
 
 **NOTE:** All code for the labs in this class will be created and executed on the lab virtual machine.
 

@@ -82,15 +82,9 @@ Add a lookup map as follows in the locals block right above the cluster_size loc
 
 ```
   size_spec = {
-    low = {
-      cluster_size = 1
-    },
-    medium = {
-      cluster_size = 2
-    },
-    high = {
-      cluster_size = 3
-    }
+    low = 1,
+    medium = 2,
+    high = 3
   }
 ```
 
@@ -133,7 +127,7 @@ Try your hand at writing out the computation.  In the `main.tf` file, replace th
  _<summary>Click to see one solution for computing cluster_size</summary>_
 
 ```
-  cluster_size = try(coalesce(var.node_count, lookup(local.size_spec,var.load_level).cluster_size), 1)
+  cluster_size = try(coalesce(var.node_count, lookup(local.size_spec,var.load_level)), 1)
 ```
 </details>
 
