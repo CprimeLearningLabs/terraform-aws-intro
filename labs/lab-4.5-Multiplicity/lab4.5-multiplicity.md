@@ -216,7 +216,3 @@ Run terraform plan to see whether or not the additional bucket gets created.  Is
 ```
 terraform plan
 ```
-
-### (Optional) Trying out the load balanced cluster
-
-If you have extra time now or later, you can verify that the load balancer actually works to connect to the clustered VMs.  See the instructions at [Testing Your Cluster](../optional-material/testing_your_cluster.md).

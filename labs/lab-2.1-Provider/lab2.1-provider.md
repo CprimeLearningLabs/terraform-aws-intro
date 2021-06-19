@@ -42,9 +42,11 @@ provider "random" {
 }
 ```
 
+> For all the labs, the solution code for the lab is contained in the solution folder.  If you want to check your code or need some help, you can always look at or copy the solution code.
+
 Save the file.
 
-> For all the labs, the solution code for the lab is contained in the solution folder.  If you want to check your code or need some help, you can always look at or copy the solution code.
+>  If you are doing the labs from a Windows machine, be sure to save the Terraform files with UTF-8 encoding. (Notepad defaults to unicode encoding.)
 
 To see what you have done, run the following command:
 

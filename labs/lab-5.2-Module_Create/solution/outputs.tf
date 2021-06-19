@@ -7,5 +7,5 @@ output "db-server-endpoint" {
 }
 
 output "load-balancer-dns" {
-  value = aws_lb.lab.dns_name
+  value = module.load-balancer.dns_name
 }

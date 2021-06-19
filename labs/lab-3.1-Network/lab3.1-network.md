@@ -165,7 +165,7 @@ Run terraform validate.
 ```
 terraform validate
 ```
-Run terraform plan.
+Run terraform plan.  Look though the plan to confirm it matches what you would expect.
 ```
 terraform plan
 ```
@@ -190,7 +190,7 @@ On the VPC dashboard page, select the "Your VPCs" menu item in the left navigati
 ![VPC Dashboard](./images/vpc-dashboard.png "VPC Dashboard")
 <br /><br />
 
-You will see two VPCs listed.  One has the name "Terraform Labs".  This is the one your just created.  The other VPC is a default VPC, which we will ignore for this class.
+You will see two VPCs listed.  One has the name "Terraform Labs".  This is the one you just created.  You can ignore the other VPC.
 
 ![VPC List](./images/vpc-list.png "VPC List")
 <br /><br />

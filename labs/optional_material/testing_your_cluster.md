@@ -2,6 +2,12 @@
 
 If you want to verify that the load-balanced cluster actually works, you can follow the instructions below to install an HTTP server on the cluster VMs and then use the load balancer public DNS in a browser to make an HTTP request.
 
+### Add a Nat Gateway
+
+The instructions below require public Internet access from the cluster VMs to download the Apache package.  Since the cluster VMs are on a private subnet, you will need to add a NAT Gateway into your infrastructure to enable Internet access from the private subnet.  Some of the resources you will need to use include aws_nat_gateway and aws_route_table.
+
+If you are up to a challenge, you can try to write this code on your own.  Compare your solution with the code in the `nat.tf` file in the solution folder.
+
 ### Log into Bastion Host
 
 The cluster VMs are in a private subnet and can only be accessed indirectly via the bastion host.
@@ -12,7 +18,6 @@ ssh ubuntu@<bastion-public-ip>
 ```
 
 *You may also be prompted to confirm that you want to connect. Enter "yes".*
-
 
 ### Connect to Cluster VMs and Install HTTP Server
 
@@ -29,8 +34,6 @@ On each of the cluster VMs, run the following command to start a simple HTTP ser
 ```
 sudo apt-get install -y apache2
 ```
-
-![Cloudshell - apt-get install](./images/cs-apt-get-install.png "Cloudshell - apt-get install")
 
 Exit from the cluster VM and bastion host.
 

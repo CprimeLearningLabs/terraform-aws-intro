@@ -35,12 +35,23 @@ resource "aws_lb" "lab" {
 }
 
 resource "aws_lb_target_group" "lab" {
-  name     = "terraform-labs-load-balancer"
+  name     = "terraform-labs-lb-target-group"
   vpc_id   = aws_vpc.lab.id
   port     = 80
   protocol = "HTTP"
 
   tags = {
     Name = "Terraform-Labs-Load-Balancer"
+  }
+}
+
+resource "aws_lb_listener" "lab" {
+  load_balancer_arn = aws_lb.lab.id
+  port              = "80"
+  protocol          = "HTTP"
+
+  default_action {
+    target_group_arn = aws_lb_target_group.lab.id
+    type             = "forward"
   }
 }

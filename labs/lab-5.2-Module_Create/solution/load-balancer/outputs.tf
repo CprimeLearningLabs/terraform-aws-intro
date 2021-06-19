@@ -3,5 +3,5 @@ output "target_group_arn" {
 }
 
 output "dns_name" {
-  value = module.load-balancer.dns_name
+  value = aws_lb.lab.dns_name
 }
