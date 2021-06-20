@@ -21,6 +21,8 @@ ssh ubuntu@<bastion-public-ip>
 
 ### Connect to Cluster VMs and Install HTTP Server
 
+> :warning: &nbsp; Before being able to use SSH from the bastion host, you will need to upload the SSH private key the bastion host.  You can put the key as a file named 'id_rsa' in the .ssh subdirectory of the ubuntu home directory.
+
 From the bastion host, you can SSH to each of the cluster VMs. To SSH to the cluster VMs, you will need their private IPs since these machines do not have a public IP.  You can find those by viewing the cluster VMs in the AWS Management Console, or by using terraform show to see the state of the resources.
 
 ![AWS Console - VM 0 IP address](./images/aws-vm-0-ip.png "AWS Console - VM 0 IP address")

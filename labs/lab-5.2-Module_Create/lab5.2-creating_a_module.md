@@ -166,4 +166,4 @@ This is the final lab of the class.  When you are done with the lab and are sati
 terraform destroy
 ```
 
-The destroy might take up to 10 minutes.
+The destroy might take up to 10 minutes. (Destroying the internet gateway seems to take quite a while.)
