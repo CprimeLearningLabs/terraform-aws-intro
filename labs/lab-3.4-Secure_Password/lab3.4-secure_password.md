@@ -10,7 +10,7 @@ If you did not complete lab 3.3, you can simply copy the solution code from that
 
 ## Lab
 
-Open the file "database.tf" for edit.
+Open the file `database.tf` for edit.
 
 Add a new resource to create a random password that satisfies the constraints for MySQL passwords.
 ```
@@ -45,7 +45,7 @@ Run terraform validate to make sure you have no errors:
 terraform validate
 ```
 
-Run terraform plan:
+Run terraform plan.  Two new resources will be created, and the database will be updated in-place.
 ```
 terraform plan
 ```
@@ -55,9 +55,11 @@ Run terraform apply.
 terraform apply
 ```
 
-![Terraform - Apply vault addition](./images/tf-apply-vault.png "Terraform - Apply vault addition")
+Let's now see that Terraform treats a random password resource as a sensitive value.
 
-Let's now see that Terraform treats a random password resource as a sensitive value. Run the following to verify that the value is not actually shown and is displayed as “(sensitive value)”.  This ensures that the secure password does not leak into logs.
+First, look back at the output from the terraform plan and apply operations.  You will see that the password value in all the resources is shown as "(sensitive value)".
+
+Next, run the following to verify that the value is also displayed as “(sensitive value)” when displaying the terraform state.  This ensures that the secure password does not leak into logs.
 
 ```
 terraform state show aws_ssm_parameter.dbpassword
@@ -66,20 +68,18 @@ terraform state show random_password.dbpassword
 
 ![Terraform - Show state](./images/tf-state-show.png "Terraform - Show state")
 
-### Viewing Results in Azure Portal
+:bangbang: NOTE: Using credentials stored in parameter store helps secure the database.  Applications that need to access the database should use provisioning logic to extract the password from the parameter store and inject it into the application.  The password should not be saved in files on an application server.
 
-Let’s now confirm the secret was created in Azure.
+### Viewing the Password in AWS Console
 
-Go to the Azure Portal.  Type “vault” and select the “Key vaults” auto-suggestion.
+For privileged users, the password can be revealed through the AWS console.  Let's take a look.
 
-![Azure Portal - Vault](./images/az-vault.png "Azure Portal - Vault")
+1. In the AWS console search bar, type "systems manager". Click on the Systems Manager item in the drop-down.
 
-Click on the key vault.
+2. On the Systems Manage dashboard page, click on the "Parameter Store" menu item in the left navigation panel.  This will show a list of your stored parameters.
 
-![Azure Portal - Key Vault](./images/az-key-vault.png "Azure Portal - Key Vault")
+![AWS Console - Parameter Store](./images/aws-parameter-store.png "AWS Console - Parameter Store")
 
-Click on Secrets to confirm your database password secret was created.
+3. In the list of parameters, click on the parameter "/database/Lab/password".  On the parameter overview page, you can click on "Show" to see the password.
 
-![Azure Portal - Vault Secret](./images/az-secret.png "Azure Portal - Vault Secret")
-
-:bangbang: NOTE: Using credentials stored in parameter store helps secure the database.  Applications that need to access the database should use provisioning logic to extract the password from the parameter store and inject it into the application.  Although the password in the parameter store can be revealed to privileged users, the password should not be saved in files on an application server.
+![AWS Console - Password](./images/aws-password.png "AWS Console - Password")

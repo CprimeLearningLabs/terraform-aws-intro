@@ -35,16 +35,10 @@ locals {
   environment = "Lab"
   instance_ami = "ami-03d5c68bab01f3496"  # ubuntu OS
   size_spec = {
-    low = {
-      cluster_size = 1
-    },
-    medium = {
-      cluster_size = 2
-    },
-    high = {
-      cluster_size = 3
-    }
+    low = 1,
+    medium = 2,
+    high = 3
   }
-  cluster_size = try(coalesce(var.node_count, lookup(local.size_spec,var.load_level).cluster_size), 1)
+  cluster_size = try(coalesce(var.node_count, lookup(local.size_spec,var.load_level)), 1)
   archiving_enabled = false
 }

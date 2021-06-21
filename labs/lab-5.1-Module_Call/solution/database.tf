@@ -73,9 +73,9 @@ resource "aws_db_instance" "lab-database" {
   }
 }
 
-module "dynamodb" "lab" {
+module "dynamodb" {
   source  = "terraform-aws-modules/dynamodb-table/aws"
-  version = "1.0.0"
+  version = "1.1.0"
 
   name     = "terraform-labs-kvstore"
   hash_key = "Property"

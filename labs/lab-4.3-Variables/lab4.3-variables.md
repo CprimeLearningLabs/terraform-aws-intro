@@ -13,7 +13,7 @@ First, think about what you might want to parameterize in the configuration you 
 
 :question: What variations might you want to support?  Should there be a default value for some parameters, and which parameters should be required?
 
-Create a file called variables.tf
+Create a file called `variables.tf`.
 
 For this lab, we will create variables for the following:
 -	Region
@@ -48,17 +48,17 @@ variable "db_name" {
 
 Now, use a variable reference to replace the corresponding target expressions in the configuration files.  There should be three places:
 
-- Set the region local value in main.tf with var.region
-- Set the key_name value for aws_instance in bastion.tf with var.vm_keypair_name
-- Set the name value for aws_db_instance in database.tf with var.db_name
+- Set the region local value in "main.tf" with `var.region`
+- Set the key_name value for aws_instance in "bastion.tf" with `var.vm_keypair_name`
+- Set the name value for aws_db_instance in "database.tf" with `var.db_name`
 
 Run terraform validate to check for errors.
 
 ### Setting the Variable Values
 
-Create a file called terraform.tfvars
+Create a file called `terraform.tfvars`
 
-Set the values for the variables in that file.  Keep the region the same as before to avoid recreating the entire infrastructure.
+Set the values for the variables in that file.  Keep the values the same as before to avoid recreating resources. Note that if you included a default value for the db_name variable in "variables.tf", then you can omit setting the value in "terraform.tfvars".
 
 ```
 region = "us-west-2"
@@ -73,7 +73,7 @@ terraform plan
 
 ### Extra Credit -- Validation
 
-If you still have time, add a validation block for the vm_keypair_name variable in variables.tf to verify the value is not null and not an empty string.
+If you still have time, add a validation block for the `vm_keypair_name` variable in `variables.tf` to verify the value is not null and not an empty string. You can try your hand at writing the condition check, or take a look at a solution below.
 
 ```
 variable "vm_keypair_name" {
@@ -87,4 +87,4 @@ variable "vm_keypair_name" {
 }
 ```
 
-Change the value of vm_keypair_name in <code>terraform.tfvars</code> file to an empty string ("").  Run terraform plan.  You should get an error.  Change the value back to a valid value of "tf-lab-key".
+Change the value of vm_keypair_name in `terraform.tfvars` file to an empty string ("").  Run terraform plan.  You should get an error.  Change the value back to a valid value of "tf-lab-key".

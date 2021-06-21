@@ -5,7 +5,9 @@ Lab Objective:
 
 ## Preparation
 
-Be sure to have completed the instructions on the "environment-setup" page.
+Be sure to have completed the instructions on the "environment-access" page: [Verifying Environment Access](../environment-access/environment-access.md)
+
+**NOTE:** All code for the labs in this class will be created and executed on the lab virtual machine.
 
 ## Lab
 
@@ -17,9 +19,9 @@ Create a file called `main.tf`:
 touch main.tf
 ```
 
-Open the file for edit.  You can either use "vim" or you can use the built-in editor in the CloudShell".  To open the built-in editor, click the *Open Editor* icon (looks like curly braces) above the console area.  In the file editor, expand the directory tree on the left.
+Open the file for edit.  You can use your choice of command line editor: vi, vim, nano.
 
-Create a terraform block to specify that "random" is a required provider.  We also specify that we want to use version 0.13.0 or above for the Terraform version.
+In the file, create a terraform block to specify that "random" is a required provider.  We also specify that we want to use version 0.15.0 or above for the Terraform version.
 
 ```
 terraform {
@@ -40,9 +42,11 @@ provider "random" {
 }
 ```
 
-Save the file.  (If you are using the built-in editor, the Save will be under the ``...`` icon in the upper right of the file editor area.)
+> For all the labs, the solution code for the lab is contained in the solution folder.  If you want to check your code or need some help, you can always look at or copy the solution code.
 
-> For all the labs, the solution code for the lab is contained in the solution folder.  If you want to check your code or need some help, you can always look or copy the solution code.
+Save the file.
+
+>  If you are doing the labs from a Windows machine, be sure to save the Terraform files with UTF-8 encoding. (Notepad defaults to unicode encoding.)
 
 To see what you have done, run the following command:
 
@@ -52,4 +56,4 @@ terraform providers
 
 You should see the following output showing that Terraform recognizes the provider you are wanting to use.
 
-![Terraform Providers](./images/tf-providers-ss.png "Terraform Providers Output")
+![Terraform Providers](./images/tf-providers.png "Terraform Providers Output")

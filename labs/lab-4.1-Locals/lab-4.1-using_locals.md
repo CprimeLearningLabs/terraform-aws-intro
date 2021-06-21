@@ -11,9 +11,9 @@ If you did not complete lab 3.4, you can simply copy the solution code from that
 
 Look through the code to see what literal values might be best declared in a common block rather than sprinkled throughout the code.  What do you come up with?
 
-Open the file “main.tf”.
+Open the file `main.tf` for edit.
 
-In your main.tf file open for edit, add a locals block at the bottom of the file:
+Add a locals block at the bottom of the file:
 ```
 locals {
   region       = "us-west-2"
