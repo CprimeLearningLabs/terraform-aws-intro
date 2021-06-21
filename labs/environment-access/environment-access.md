@@ -46,7 +46,7 @@ Your instructor will provide the following access information to you:
 * Machine IP address or hostname
 * User credentials (username and password)
 
-Using Windows Remote Desktop from your local machine, enter the provided information to connect to the Windows machine.  If you are new to Windows Remote Desktop, follow the instructions in the linked document below.  **Use the host and SSH key provided by your instructor in place of the host and credentials referenced in the document.**
+Using Windows Remote Desktop from your local machine, enter the provided information to connect to the Windows machine.  If you are new to Windows Remote Desktop, follow the instructions in the linked document below.  **Use the host and credentials provided by your instructor in place of the host and credentials referenced in the document.**
 
 https://cprime.securevdr.com/share/view/se9a65f4b06b64a578a6f0efd63d110bf
 
