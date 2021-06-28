@@ -46,7 +46,7 @@ You should see following:
 
 ![Terraform validate](./images/tf-validate.png "Output of terraform validate")
 
-Let's generation an execution plan. Run the following:
+Let's generate an execution plan. Run the following:
 
 ```
 terraform plan

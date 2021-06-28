@@ -102,7 +102,7 @@ resource "aws_subnet" "lab-public-2" {
 }
 ```
 
-3. A route table to direct outbound Internet traffic to the internet gateway.
+4. A route table to direct outbound Internet traffic to the internet gateway.
 
 ```
 resource "aws_route_table" "lab-public" {
@@ -117,7 +117,7 @@ resource "aws_route_table" "lab-public" {
 }
 ```
 
-4. An association of the route table to each of the public subnets.
+5. An association of the route table to each of the public subnets.
 
 ```
 resource "aws_route_table_association" "lab-public-1" {
@@ -131,7 +131,7 @@ resource "aws_route_table_association" "lab-public-2" {
 }
 ```
 
-5. Two private subnets.
+6. Two private subnets.
 
 ```
 resource "aws_subnet" "lab-private-1" {
