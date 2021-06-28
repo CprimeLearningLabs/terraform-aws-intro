@@ -45,7 +45,7 @@ resource "aws_security_group" "lab-bastion" {
 }
 ```
 
-2. A virtual machine. (The SSH key for accessing the VM already exists and will be provided to you by the instructor.)
+2. A virtual machine. The key pair already exists in your account.
 ```
 resource "aws_instance" "lab-bastion" {
   ami                    = "ami-03d5c68bab01f3496" # ubuntu OS
@@ -116,6 +116,9 @@ Confirm you can ssh into the new bastion host machine.  You should see that the 
 ![SSH into VM](./images/cs-vm-ssh.png "SSH into VM")
 
 Exit the SSH session on the bastion host virtual machine.
+```
+exit
+```
 
 ### Making Changes to An Existing Resource
 

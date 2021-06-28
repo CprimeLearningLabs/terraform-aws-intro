@@ -77,6 +77,7 @@ Copy the contents from the lb.tf file in the solution directory into your new fi
 * A security group to enable HTTP traffic through the load balancer
 * A load balancer
 * A target group to forward HTTP traffic to the cluster virtual machines
+* A listener to forward inbound traffic to the target group
 
 Do not make any changes.  You can examine the file, but leave it as is.  We will be coming back to revisit this file in a subsequent lab.
 

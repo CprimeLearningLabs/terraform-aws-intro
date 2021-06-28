@@ -50,3 +50,13 @@ terraform output load-balancer-dns
 You can now go to a browser and use the DNS of the load balancer to hit the HTTP server on the VMs.  
 
 ![Browser - http load balancer](./images/http-lb.png "Browser - http load balancer")
+
+
+## Lab Cleanup
+
+When you are done with all the labs in this class and are satisfied with the results, please tear down everything you created by running terraform destroy:
+```
+terraform destroy
+```
+
+The destroy might take up to 10 minutes. (Destroying the internet gateway sometimes seems to take quite a while.)

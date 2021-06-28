@@ -16,9 +16,9 @@ First, think about what you might want to parameterize in the configuration you 
 Create a file called `variables.tf`.
 
 For this lab, we will create variables for the following:
--	Region
-- VM key pair name
--	Database name
+-	Region (no default value)
+- VM key pair name (no default value)
+-	Database name (default value is "appdb")
 
 Try your hand at writing the variable declarations in variables.tf.  Run terraform validate to check for syntax errors.
 

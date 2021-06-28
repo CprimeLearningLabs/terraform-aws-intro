@@ -107,7 +107,7 @@ At this point, you now have a nested module with inputs and outputs defined.  Ne
 
 Open the file `lb.tf` in the root module (parent directory).  
 
-Delete the two resources `"aws_lb" "lab"` and `"aws_lb_target_group" "lab"` since those are now in the load-balancer's main.tf file.
+Delete the three resources `"aws_lb" "lab"`, `"aws_lb_target_group" "lab"` and `"aws_lb_listener" "lab"` since those are now in the load-balancer's main.tf file.
 
 Add a call to the load balancer module, setting argument values corresponding to the input variables for the load balancer.  The module source should be "./load-balancer".
 
@@ -166,4 +166,4 @@ This is the final lab of the class.  When you are done with the lab and are sati
 terraform destroy
 ```
 
-The destroy might take up to 10 minutes. (Destroying the internet gateway seems to take quite a while.)
+The destroy might take up to 10 minutes. (Destroying the internet gateway sometimes seems to take quite a while.)
