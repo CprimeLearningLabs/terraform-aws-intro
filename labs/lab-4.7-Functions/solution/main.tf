@@ -14,7 +14,7 @@ terraform {
     key            = "terraform.labs.tfstate"
     dynamodb_table = "terraform-state-lock"
   }
-  required_version = "~> 0.15.0"
+  required_version = "~> 1.0.0"
 }
 
 provider "random" {

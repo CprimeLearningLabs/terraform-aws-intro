@@ -5,7 +5,7 @@ terraform {
       version = "~> 3.0"
     }
   }
-  required_version = "~> 0.15.0"
+  required_version = "~> 1.0.0"
 }
 
 resource "aws_lb" "lab" {
