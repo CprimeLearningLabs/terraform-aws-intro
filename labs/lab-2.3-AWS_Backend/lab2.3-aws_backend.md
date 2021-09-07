@@ -58,7 +58,7 @@ terraform {
 
 This will now direct the state to be saved in AWS.  Since you changed the backend configuration, you will need to run terraform init again.
 
-A missing argument in the backend configuration above is the specification of the S3 bucket.  Terraform will therefore prompt you to enter the bucket name when you run terraform init.  The bucket name will be "cprimelearning-tflabs-NN" where NN is a student sequence number provided to you by the instructor.  For example, if your sequence number is "05", then the bucket name would be "cprimelearning-tflabs-05".
+A missing argument in the backend configuration above is the specification of the S3 bucket.  Terraform will therefore prompt you to enter the bucket name when you run terraform init.  The bucket name will be "cprimelearning-tflabs-NN" where NN is a student sequence number provided to you by the instructor.  For example, if your sequence number is "05", then the bucket name would be "cprimelearning-tflabs-05".  You should have been provided the bucket name to use by the instructor.
 
 Run:
 
