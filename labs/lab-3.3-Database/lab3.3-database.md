@@ -1,7 +1,7 @@
 # Database and Data Source
 
 Lab Objective:
-- Use a data source to obtain a KMS key
+- Use a data source to obtain a pre-existing KMS key
 - Add a database to your infrastructure
 
 ## Preparation

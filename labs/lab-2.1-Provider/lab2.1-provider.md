@@ -19,7 +19,9 @@ Create a file called `main.tf`:
 touch main.tf
 ```
 
-Open the file for edit.  You can use your choice of command line editor: vi, vim, nano.
+> If you are using a Windows workstation, you can create the file through the file explorer UI.  Be sure the file extension is ".tf" and not ".txt".
+
+Open the file for edit.
 
 In the file, create a terraform block to specify that "random" is a required provider.  We also specify that we want to use version 0.15.0 or above for the Terraform version.
 
@@ -31,7 +33,7 @@ terraform {
       version = "~> 2.3.0"
     }
   }
-  required_version = "~> 0.15.0"
+  required_version = "~> 1.0.0"
 }
 ```
 
@@ -46,7 +48,7 @@ provider "random" {
 
 Save the file.
 
->  If you are doing the labs from a Windows machine, be sure to save the Terraform files with UTF-8 encoding. (Notepad defaults to unicode encoding.)
+>  If you are doing the labs from a Windows machine, be sure to save the Terraform files with UTF-8 or ANSI encoding. (Notepad defaults to unicode encoding.)
 
 To see what you have done, run the following command:
 

@@ -5,7 +5,7 @@ terraform {
       version = "~> 3.0"
     }
   }
-  required_version = "~> 0.15.0"
+  required_version = "~> 1.0.0"
 }
 
 resource "aws_lb" "lab" {
@@ -39,5 +39,9 @@ resource "aws_lb_listener" "lab" {
   default_action {
     target_group_arn = aws_lb_target_group.lab.id
     type             = "forward"
+  }
+
+  tags = {
+    Name = "Terraform-Labs-Load-Balancer"
   }
 }
